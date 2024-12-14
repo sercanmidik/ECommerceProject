@@ -46,7 +46,9 @@ namespace WebUI.Extensions
             services.AddScoped<IServiceDal, EfServiceDal>();
             services.AddScoped<IWeekProductService, WeekProductManager>();
             services.AddScoped<IWeekProductDal, EfWeekProductDal>();
-            return services;
+			services.AddScoped<ISeoService, SeoManager>();
+			services.AddScoped<ISeoDal, EfSeoDal>();
+			return services;
         }
 
         public static void ConfigureApplicationCookie(this IServiceCollection services)

@@ -24,5 +24,6 @@ namespace DataAccessLayer.Concrate
         public DbSet<ProductFeature> ProductFeatures { get; set; }
         public DbSet<Service> Services { get; set; }
         public DbSet<WeekProduct> WeekProducts { get; set; }
+        public DbSet<Seo> Seos { get; set; }
     }
 }
