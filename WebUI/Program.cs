@@ -1,7 +1,16 @@
-var builder = WebApplication.CreateBuilder(args);
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
+using WebUI.Extensions;
 
-// Add services to the container.
-builder.Services.AddControllersWithViews();
+var builder = WebApplication.CreateBuilder(args);
+var requireAuthorizePolicy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
+
+builder.Services.AddControllersWithViews(opt =>
+{
+    opt.Filters.Add(new AuthorizeFilter(requireAuthorizePolicy));
+});
+builder.Services.AddApplicationServices();
+builder.Services.ConfigureApplicationCookie();
 
 var app = builder.Build();
 
